@@ -1,5 +1,6 @@
 #!/usr/bin/python3
-
+import json
+from models.base_model import BaseModel
 
 
 class FileStorage:
@@ -11,13 +12,12 @@ class FileStorage:
         self.__objects = {}
 
     def all(self):
-        dict1 = self.__objects
-        return ()
+        return self.__objects
 
     def new(self, obj):
-        """sets in __objects the obj with key <obj class name>.id
+        """sets  `in __objects the obj with key <obj class name>.id
         """
-        check = "{}.{}".format(obj.__class__, obj.id)
+        check = "{}.{}".format(obj.__class__.__name__, obj.id)
         dict = {check : obj}
         self.__objects.update(dict)
 
@@ -25,11 +25,16 @@ class FileStorage:
         """T o save to JSON format
         """
         with open (self.__file_path, "w") as fpoint:
-            json.dump(self.__object, fpoint)
+            json.dump({k: v.to_dict() for k ,v in self.__objects.items()}, fpoint)
 
     def reload(self):
         """To deserialize JSON objects
         """
-        with open(self.__file_path, "r") as rpoint:
-            readfile = rpoint.read()
-        return (readfile)
+        try:
+            with open(self.__file_path, "r") as rpoint:
+                dict = json.loads(rpoint.read())
+                for value in dict.values():
+                    cls = value["__class__"]
+                    self.new(eval(cls)(**value))
+        except Exception:
+            pass
