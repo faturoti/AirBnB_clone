@@ -32,13 +32,13 @@ class BaseModel:
 
         if kwargs is not None:
             for key, value in kwargs.items():
-                if key == 'id':
+                if key == "id":
                     self.id = value
                     continue
-                if key == 'created_at':
+                if key == "created_at":
                     self.created_at = datetime.strptime(value, DATE_TIME_FORMAT)
                     continue
-                if key == 'updated_at':
+                if key == "updated_at":
                     self.updated_at = datetime.strptime(value, DATE_TIME_FORMAT)
     
     def __str__(self):
@@ -69,8 +69,10 @@ class BaseModel:
 
     def to_dict(self):
         """returns a dictionary containing all keys/values 
-        of __dict__"""
+        of __dict__
+        """
         dictionary1 = {'my_number' : 89, 'name' : 'My First Model'}
+        dictionary1["__class__"] = self.__class__.__name__
         for key, value in self.__dict__.items():
             if key == "created_at" or key == "updated_at":
                 dictionary1[key] = value.isoformat()
