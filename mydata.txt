@@ -1,1 +1,1 @@
-{"my_number": 89, "name": "My First Model", "id": "71e3bdf8-c8db-4f0c-b16e-91b17e2ca548", "created_at": "2024-03-07 15:04:26.493446", "updated_at": "2024-03-07 15:04:26.493471"}
+{"my_number": 89, "name": "My First Model", "id": "0729b598-fca1-4502-9178-7d6b9022c5bb", "created_at": "2024-03-10 08:38:51.595582", "updated_at": "2024-03-10 08:38:51.595586"}
