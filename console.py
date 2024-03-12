@@ -150,5 +150,20 @@ class HBNBCommand(cmd.Cmd):
         key = args[0] + "." + args[1]
         print(d[key])
 
+    def do_all(self, line):
+        """hows all instances, or instances of a certain clas
+        Args:
+            line(args): enter with command (optional):
+            Example: 'all' OR 'all User'
+        """
+        d = storage.all()
+        if not line:
+            print([str(x) for x in d.values()])
+            return
+        args = line.split()
+        if (self.handle_errors(line, 1) == 1):
+            return
+        print([str(v) for v in d.values() if v.__class__.__name__ == args[0]])
+
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
