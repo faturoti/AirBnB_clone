@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 
-"""User class for initiating Uasers"""
+"""User class for initiating Users"""
 
 from models.base_model import BaseModel
 
