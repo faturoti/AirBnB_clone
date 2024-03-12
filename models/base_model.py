@@ -52,10 +52,11 @@ class BaseModel:
         Represent the BaseModel in string format
         """
         dictionary1 = {'my_number' : 89, 'name' : 'My First Model'}
+        dictionary1.update(self.__dict__)
         dictionary1.update({'id' : self.__dict__['id']})
         dictionary1.update({'updated_at' : self.__dict__['updated_at'].isoformat()})
         dictionary1.update({'created_at' : self.__dict__['created_at'].isoformat()})
-        rect = "[Basemodel] ({}) {}".format(self.id, dictionary1)
+        rect = "[{}] ({}) {}".format(self.__class__.__name__, self.id, dictionary1)
         return (rect)
     
     def save(self):
