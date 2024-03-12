@@ -56,7 +56,7 @@ class BaseModel:
         dictionary1.update({'id' : self.__dict__['id']})
         dictionary1.update({'updated_at' : self.__dict__['updated_at'].isoformat()})
         dictionary1.update({'created_at' : self.__dict__['created_at'].isoformat()})
-        rect = "[{}] ({}) {}".format(self.__class__.__name__, self.id, dictionary1)
+        rect = "[{}] ({}) {}".format(self.__class__.__name__, self.id, self.__dict__)
         return (rect)
     
     def save(self):
