@@ -165,5 +165,33 @@ class HBNBCommand(cmd.Cmd):
             return
         print([str(v) for v in d.values() if v.__class__.__name__ == args[0]])
 
+    def my_count(self, class_n):
+        """
+        To count total instances
+        """
+        count_instance = 0
+        for instance_object in storage.all().values():
+            if instance_object.__class__.__name__ == class_n:
+                count_instance += 1
+        print(count_instance)
+
+    def default(self, line):
+        """Default program for the weak
+        """
+        names = ["BaseModel", "User", "State", "City", "Amenity",
+                    "Place", "Review"]
+        commands = {"all": self.do_all,
+                    "count": self.my_count,
+                    "show": self.do_show,
+                    "destroy": self.do_destroy,
+                    "update": self.do_update}
+        args = re.match(r"^(\w+)\.(\w+)\((.*)\)", line)
+        if args:
+            args = args.groups()
+        if not args or len(args) < 2 or args[0] not in names \
+                or args[1] not in commands.keys():
+            super().default(line)
+        return
+
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
