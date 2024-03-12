@@ -36,3 +36,6 @@ class TestBaseModel(unittest.TestCase):
         """
         mymodel1 = BaseModel()
         self.assertNotEqual(mymodel1.created_at, mymodel1.updated_at)
+
+if __name__ == '__main__':
+    unittest.main()
