@@ -1,0 +1,19 @@
+body {
+	margin: 0;
+	padding: 0;
+	color: #484848;
+	font-size: 14px;
+	font-family: Circular,"Helvetica Neue",Helvetica,Arial,sans-serif;
+	background-color: #FFFFFF;
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+	align-items: center;
+}
+.container {
+	margin-top: 30px;
+	margin-bottom: 30px;
+	max-width: 1000px;
+	padding-text-align: center;
+	padding-left: 10px;
+}
